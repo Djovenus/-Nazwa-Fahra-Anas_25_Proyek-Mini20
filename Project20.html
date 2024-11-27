@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project 20</title>
+    <style>
+        .body {
+            margin-left: 35%;
+            margin-top: 6%;
+            font-size: 40px;
+            font-family: Times New Roman;
+        }
+         #itemText{
+           padding: 10px;
+           border: 2px solid black;
+           border-radius: 20px;
+           margin-top: 10px;
+           margin-left: 40px;
+           font-size: 30px;
+           margin-bottom: 20px;
+           margin-left: 90px;
+         }
+         #itemCount{
+           padding: 10px;
+           border: 2px solid black;
+           border-radius: 20px;
+           margin-top: 10px;
+           margin-left: 40px;
+           font-size: 30px;
+         }
+         #button{
+          padding: 15px;
+          border-radius: 20px;
+          font-size: 30px;
+          margin-top: 40px;
+          margin-left: 190px;
+         }
+    </style>
+    <script>
+        function changeColor(color) {
+            let items = document.getElementsByClassName("ListItem"); 
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.color = color;
+            }
+        }
+
+        function changeHover(color) {
+            let items = document.getElementsByClassName("ListItem"); 
+            for (var i = 0; i < items.length; i++) {
+                items[i].onmouseover = function() {
+                    this.style.backgroundColor = color;
+                }
+                items[i].onmouseout = function() {
+                    this.style.backgroundColor = ""; 
+                }
+            }
+        }
+
+        function generateItems() {
+            const itemText = document.getElementById("itemText").value;
+            const itemCount = parseInt(document.getElementById("itemCount").value);
+            const list = document.getElementById("itemList");
+
+            list.innerHTML = '';
+
+            for (let i = 0; i < itemCount; i++) {
+                const li = document.createElement("li");
+                li.className = "ListItem";
+                li.textContent = itemText;
+                list.appendChild(li);
+            }
+        }
+    </script>
+</head>
+<body class="body">
+    <ul id="itemList" class="List">
+        <li class="ListItem">Item 1</li>
+        <li class="ListItem">Item 2</li>
+        <li class="ListItem">Item 3</li>
+        <li class="ListItem">Item 4</li>
+        <li class="ListItem">Item 5</li>
+        <li class="ListItem">Item 6</li>    
+    </ul>
+    
+      <h1>Konfigurasi</h1>
+    <label>Teks</label> 
+    <input type="text" id="itemText" placeholder="Masukkan teks item">
+    <br>
+    <label>Jumlah</label> 
+    <input type="number" id="itemCount" placeholder="Jumlah item" min="1">
+   <br> <button onclick="generateItems()" id="button">Generate</button>
+   
+    <h1 class="Teks">Warna Teks</h1> 
+    <input type="radio" onclick="changeColor(this.value)" name="color" value="Blue"> Biru
+    <input type="radio" onclick="changeColor(this.value)" name="color" value="Green"> Hijau
+    <input type="radio" onclick="changeColor(this.value)" name="color" value="Yellow"> Kuning
+  
+    <h1 class="hover">Warna Hover</h1>
+    <input type="radio" onclick="changeHover(this.value)" name="hoverColor" value="Red"> Merah
+    <input type="radio" onclick="changeHover(this.value)" name="hoverColor" value="Brown"> Cokelat
+    <input type="radio" onclick="changeHover(this.value)" name="hoverColor" value="Pink"> Pink
+
+</body>
+</html>
